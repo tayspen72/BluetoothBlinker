@@ -16,7 +16,7 @@ $EndDescr
 Text Label 8350 1000 0    50   ~ 0
 VDDS
 $Comp
-L MySymbols:CC2642R U3
+L BluetoothBlinker-PCB-rescue:CC2642R-MySymbols U3
 U 1 1 5FD9A881
 P 9150 4800
 F 0 "U3" H 9725 8865 50  0000 C CNN
@@ -103,8 +103,6 @@ Wire Wire Line
 Wire Wire Line
 	1400 2600 1400 2650
 Wire Wire Line
-	3100 1700 2500 1700
-Wire Wire Line
 	2000 1800 2100 1800
 Wire Wire Line
 	2000 1900 2100 1900
@@ -120,37 +118,20 @@ Wire Wire Line
 Connection ~ 2100 1700
 Wire Wire Line
 	2100 1700 2000 1700
-NoConn ~ 3900 1800
-NoConn ~ 3900 1900
-NoConn ~ 3900 2000
-NoConn ~ 3900 2200
-$Comp
-L Interface_USB:CH340C U1
-U 1 1 5FDFDF2C
-P 3500 1800
-F 0 "U1" H 3250 1200 50  0000 C CNN
-F 1 "CH340C" H 3750 1200 50  0000 C CNN
-F 2 "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm" H 3550 1250 50  0001 L CNN
-F 3 "https://datasheet.lcsc.com/szlcsc/Jiangsu-Qin-Heng-CH340C_C84681.pdf" H 3150 2600 50  0001 C CNN
-	1    3500 1800
-	1    0    0    -1  
-$EndComp
-Text Label 4600 1400 2    50   ~ 0
+Text Label 4900 1400 2    50   ~ 0
 DEBUG_TX_MCU
-Text Label 4600 1500 2    50   ~ 0
+Text Label 4900 1500 2    50   ~ 0
 DEBUG_RX_MCU
-Text Label 4600 1700 2    50   ~ 0
+Text Label 4900 1700 2    50   ~ 0
 DEBUG_CTS_MCU
-Text Label 4600 2100 2    50   ~ 0
-DEBUG_DTR_MCU
 Wire Wire Line
-	4600 1400 3900 1400
+	4900 1400 4200 1400
 Wire Wire Line
-	4600 1500 3900 1500
+	4900 1500 4200 1500
 Wire Wire Line
-	4600 1700 3900 1700
+	4900 1700 4200 1700
 Wire Wire Line
-	4600 2100 3900 2100
+	4900 2200 4200 2200
 $Comp
 L Regulator_Linear:TLV75533PDBV U2
 U 1 1 5FE130C1
@@ -244,8 +225,6 @@ Wire Wire Line
 Wire Wire Line
 	2700 1900 2700 1800
 Connection ~ 2700 1800
-Wire Wire Line
-	2700 1800 3100 1800
 $Comp
 L power:GND1 #PWR0105
 U 1 1 5FDCE590
@@ -312,30 +291,29 @@ Wire Wire Line
 	6400 7500 5950 7500
 Connection ~ 5950 7500
 Wire Wire Line
-	3500 1200 3500 1150
+	3800 1200 3800 1150
 Wire Wire Line
-	3500 1150 3400 1150
+	3800 1150 3700 1150
 Wire Wire Line
-	3400 1150 3400 1200
-Text Label 3750 1150 2    50   ~ 0
+	3700 1150 3700 1200
+Text Label 4050 1150 2    50   ~ 0
 VDD
 Wire Wire Line
-	3750 1150 3500 1150
-Connection ~ 3500 1150
-NoConn ~ 3100 1500
+	4050 1150 3800 1150
+Connection ~ 3800 1150
 $Comp
 L power:GND #PWR0106
 U 1 1 5FE7B169
-P 3500 2500
-F 0 "#PWR0106" H 3500 2250 50  0001 C CNN
-F 1 "GND" H 3505 2327 50  0000 C CNN
-F 2 "" H 3500 2500 50  0001 C CNN
-F 3 "" H 3500 2500 50  0001 C CNN
-	1    3500 2500
+P 3800 2500
+F 0 "#PWR0106" H 3800 2250 50  0001 C CNN
+F 1 "GND" H 3805 2327 50  0000 C CNN
+F 2 "" H 3800 2500 50  0001 C CNN
+F 3 "" H 3800 2500 50  0001 C CNN
+	1    3800 2500
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3500 2500 3500 2400
+	3800 2500 3800 2400
 Text Label 11000 1000 2    50   ~ 0
 DIO_0
 Text Label 11000 1100 2    50   ~ 0
@@ -1274,9 +1252,9 @@ Wire Wire Line
 	5000 4050 4500 4050
 Wire Wire Line
 	4000 4050 3500 4050
-Text Label 2950 1700 0    50   ~ 0
+Text Label 3300 1700 0    50   ~ 0
 D+
-Text Label 2950 1800 0    50   ~ 0
+Text Label 3300 1800 0    50   ~ 0
 D-
 $Comp
 L Connector:USB_C_Receptacle_USB2.0 J1
@@ -1477,4 +1455,22 @@ F 3 "https://datasheet.octopart.com/TL3305AF160QG-E-Switch-datasheet-100437264.p
 $EndComp
 Text Label 11000 1500 2    50   ~ 0
 BTN1_MCU
+Text Label 4900 2200 2    50   ~ 0
+DEBUG_DTR_MCU
+NoConn ~ 3400 1900
+$Comp
+L Interface_USB:CH340E U?
+U 1 1 6081C6AF
+P 3800 1800
+F 0 "U?" H 3800 1111 50  0000 C CNN
+F 1 "CH340E" H 3800 1020 50  0000 C CNN
+F 2 "Package_SO:MSOP-10_3x3mm_P0.5mm" H 3850 1250 50  0001 L CNN
+F 3 "https://www.mpja.com/download/35227cpdata.pdf" H 3450 2600 50  0001 C CNN
+	1    3800 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2500 1700 3400 1700
+Wire Wire Line
+	2700 1800 3400 1800
 $EndSCHEMATC
