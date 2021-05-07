@@ -1,9 +1,28 @@
 [package]
-name = "BluetoothBlinker-MCU"
-version = "0.1.0"
 authors = ["Taylor Spencer <tayspen72@gmail.com>"]
 edition = "2018"
+name = "app"
+version = "0.1.0"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+device = []
 
 [dependencies]
+cortex-m = "0.7.2"
+cortex-m-semihosting = "0.3.7"
+heapless = "0.6.1"
+panic-halt = "0.2.0"
+
+[dependencies.cc2640r2f-pac]
+features = ["rt"]
+path = "../../cc2640r2f-pac"
+version = "0.1.0"
+
+[dependencies.cortex-m-rt]
+version = "0.6.13"
+features = ["device"]
+
+[[bin]]
+name = "app"
+test = false
+bench = false
