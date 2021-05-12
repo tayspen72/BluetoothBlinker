@@ -1,20 +1,24 @@
 {
-    /* 
-     * Requires the Rust Language Server (RLS) and Cortex-Debug extensions
-     * https://marketplace.visualstudio.com/items?itemName=rust-lang.rust
-     * https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug
-     */
-     "configurations": [
-        {
-            "name": "JLink GDB",
-            "type": "gdb",
-            "request": "launch",
-            "cwd": "${workspaceRoot}",
-			"target": "${workspaceRoot}/target/thumbv7m-none-eabi/debug/app", 
-            "gdbpath" : "arm-none-eabi-gdb",
-            "autorun": [
-                "source -v jlink.gdb",
-            ]
-        }
-    ]
+	/* 
+	 * Requires the Rust Language Server (RLS) and Cortex-Debug extensions
+	 * https://marketplace.visualstudio.com/items?itemName=rust-lang.rust
+	 * https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug
+	 */
+	 "configurations": [
+		{
+			"type": "cortex-debug",
+			"request": "launch",
+			"name": "Debug (JLink GDB)",
+			"servertype": "jlink",
+			"cwd": "${workspaceRoot}",
+			"executable": "${workspaceRoot}/target/thumbv7m-none-eabi/debug/app",
+			"device": "cc2640r2f",
+			"runToMain": true,
+			"gdbPath" : "arm-none-eabi-gdb",
+			"configFiles": [
+				"jlink.gdb",
+			],
+			
+		}
+	]
 }
