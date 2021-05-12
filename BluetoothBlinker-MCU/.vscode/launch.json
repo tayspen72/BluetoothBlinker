@@ -10,15 +10,17 @@
 			"request": "launch",
 			"name": "Debug (JLink GDB)",
 			"servertype": "jlink",
+			"serverpath": "/opt/SEGGER/JLink/JLinkGDBServerCLExe",
 			"cwd": "${workspaceRoot}",
 			"executable": "${workspaceRoot}/target/thumbv7m-none-eabi/debug/app",
 			"device": "cc2640r2f",
+			"interface": "jtag",
 			"runToMain": true,
 			"gdbPath" : "arm-none-eabi-gdb",
 			"configFiles": [
 				"jlink.gdb",
 			],
-			
+			"svdFile": "${workspaceRoot}/cc2640r2f.svd"
 		}
 	]
 }
