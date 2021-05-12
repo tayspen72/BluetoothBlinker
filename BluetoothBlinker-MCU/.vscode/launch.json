@@ -6,14 +6,14 @@
      */
      "configurations": [
         {
-            "name": "Remote debug",
+            "name": "JLink GDB",
             "type": "gdb",
             "request": "launch",
             "cwd": "${workspaceRoot}",
-            "target": "${workspaceRoot}/target/thumbv7em-none-eabihf/debug/app", 
+			"target": "${workspaceRoot}/target/thumbv7m-none-eabi/debug/app", 
             "gdbpath" : "arm-none-eabi-gdb",
             "autorun": [
-                "source -v openocd.gdb",
+                "source -v jlink.gdb",
             ]
         }
     ]
