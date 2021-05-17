@@ -17,9 +17,6 @@
 			"interface": "jtag",
 			"runToMain": true,
 			"gdbPath" : "arm-none-eabi-gdb",
-			"configFiles": [
-				"jlink.gdb",
-			],
 			"svdFile": "${workspaceRoot}/cc2640r2f.svd"
 		}
 	]

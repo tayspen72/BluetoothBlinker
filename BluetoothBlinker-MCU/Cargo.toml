@@ -12,11 +12,12 @@ cortex-m = "0.7.2"
 cortex-m-semihosting = "0.3.7"
 heapless = "0.7.0"
 panic-halt = "0.2.0"
+panic-semihosting = "0.5.6"
 
-[dependencies.cc2640r2f-pac]
+[dependencies.cc2640r2f]
 features = ["rt"]
-path = "../../cc2640r2f-pac"
-version = "0.1.0"
+git = "https://github.com/luojia65/cc2640r2f"
+version = "0.0.0"
 
 [dependencies.cortex-m-rt]
 version = "0.6.13"

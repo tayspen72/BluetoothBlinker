@@ -7,7 +7,7 @@
 // Crates and Mods
 //==============================================================================
 use cortex_m;
-use cc2640r2f_pac;
+use cc2640r2f;
 
 pub mod systick;
 
@@ -27,7 +27,7 @@ pub enum McuState {
 // Public Functions
 //==============================================================================
 pub fn init() {
-	let peripherals = cc2640r2f_pac::Peripherals::take().unwrap();
+	let peripherals = cc2640r2f::Peripherals::take().unwrap();
 	let cortex_peripherals = cortex_m::Peripherals::take().unwrap();
 
 	init_clock(peripherals.AON_WUC, peripherals.AUX_DDI0_OSC);
@@ -57,7 +57,7 @@ pub fn restart() {
 //==============================================================================
 // Private Functions
 //==============================================================================
-fn init_clock(aon_wuc:cc2640r2f_pac::AON_WUC, aux_ddi0_osc: cc2640r2f_pac::AUX_DDI0_OSC) {
+fn init_clock(aon_wuc:cc2640r2f::AON_WUC, aux_ddi0_osc: cc2640r2f::AUX_DDI0_OSC) {
 	// SCLK_HF: High Frequency Clock
 	// SCLK_LF: Low Frequency Clock
 	// SCLK_LF_AUX: Low Frequency Clock for peripherals in the AUX power domain
@@ -72,7 +72,7 @@ fn init_clock(aon_wuc:cc2640r2f_pac::AON_WUC, aux_ddi0_osc: cc2640r2f_pac::AUX_D
 	);
 
 	// Wait for the power domain to start up
-	while !aon_wuc.pwrstat.read().aux_pd_on().bits() {}
+	while aon_wuc.pwrstat.read().aux_pd_on().bit_is_set() {}
 
 	// Configure the clocks
 	aux_ddi0_osc.ctl0.write(|w| unsafe { w
