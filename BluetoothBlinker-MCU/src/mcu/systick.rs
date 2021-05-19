@@ -28,7 +28,6 @@ static SYSTICK_TIME: Mutex<Cell<u32>> = Mutex::new(Cell::new(0));
 // Public Functions
 //==============================================================================
 pub fn init(mut systick: cortex_m::peripheral::SYST) {
-
 	unsafe {
 		if INITIALIZED {
 			return;
@@ -41,6 +40,22 @@ pub fn init(mut systick: cortex_m::peripheral::SYST) {
 
 	unsafe {
 		INITIALIZED = true;
+	}
+}
+
+#[allow(dead_code)]
+pub fn get_ticks() -> u32 {
+	free(|cs| SYSTICK_TIME.borrow(cs).get())
+}
+
+#[allow(dead_code)]
+pub fn get_diff(diff: u32) -> u32 {
+	let current = get_ticks();
+	if diff > current {
+		0
+	}
+	else {
+		current - diff
 	}
 }
 

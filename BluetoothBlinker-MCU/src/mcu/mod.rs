@@ -7,8 +7,9 @@
 // Crates and Mods
 //==============================================================================
 use cortex_m;
-use cc2640r2f;
+use msp432p401r;
 
+pub mod gpio;
 pub mod systick;
 
 //==============================================================================
@@ -27,10 +28,8 @@ pub enum McuState {
 // Public Functions
 //==============================================================================
 pub fn init() {
-	let peripherals = cc2640r2f::Peripherals::take().unwrap();
+	let peripherals = msp432p401r::Peripherals::take().unwrap();
 	let cortex_peripherals = cortex_m::Peripherals::take().unwrap();
-
-	init_clock(peripherals.AON_WUC, peripherals.AUX_DDI0_OSC);
 
 	systick::init(cortex_peripherals.SYST);
 	
@@ -57,31 +56,8 @@ pub fn restart() {
 //==============================================================================
 // Private Functions
 //==============================================================================
-fn init_clock(aon_wuc:cc2640r2f::AON_WUC, aux_ddi0_osc: cc2640r2f::AUX_DDI0_OSC) {
-	// SCLK_HF: High Frequency Clock
-	// SCLK_LF: Low Frequency Clock
-	// SCLK_LF_AUX: Low Frequency Clock for peripherals in the AUX power domain
-	// ACLK-ADC: Clock source for ADC operations
-	// ACLK-REF: 
-	// ACLK-TDCLK: Time-to-digital clock
-
-	// Following some obscure procedure on section 6.5.1.1
-	// Force power on the AUX power domain
-	aon_wuc.auxctl.write( |w| w
-		.aux_force_on().set_bit()
-	);
-
-	// Wait for the power domain to start up
-	while aon_wuc.pwrstat.read().aux_pd_on().bit_is_set() {}
-
-	// Configure the clocks
-	aux_ddi0_osc.ctl0.write(|w| unsafe { w
-		.sclk_hf_src_sel().xosc()
-		.sclk_lf_src_sel().xosclf()
-		.aclk_ref_src_sel().bits(0x3) /* XOSC_LF */
-		.aclk_tdc_src_sel().bits(0x2) /* XOSC_HF */
-
-	} );
+fn init_clock() {
+	
 }
 
 //==============================================================================

@@ -13,11 +13,11 @@
 			"serverpath": "/opt/SEGGER/JLink/JLinkGDBServerCLExe",
 			"cwd": "${workspaceRoot}",
 			"executable": "${workspaceRoot}/target/thumbv7m-none-eabi/debug/app",
-			"device": "cc2640r2f",
+			"device": "msp432p401r",
 			"interface": "jtag",
 			"runToMain": true,
 			"gdbPath" : "arm-none-eabi-gdb",
-			"svdFile": "${workspaceRoot}/cc2640r2f.svd"
+			"svdFile": "${workspaceRoot}/MSP432P401R.svd"
 		}
 	]
 }
