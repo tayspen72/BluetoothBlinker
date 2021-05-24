@@ -13,6 +13,7 @@ use cortex_m_rt::entry;
 // use panic_halt as _; // Breakpoint on `rust_begin_unwind` to catch panics
 use panic_semihosting as _;
 
+mod config;
 mod mcu;
 
 //==============================================================================
