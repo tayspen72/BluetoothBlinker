@@ -238,35 +238,10 @@ F 3 "" H 2600 2400 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	2600 2400 2600 2300
-$Comp
-L Device:Varistor_US RV1
-U 1 1 5FDD0C56
-P 2750 1100
-F 0 "RV1" V 2492 1100 50  0000 C CNN
-F 1 "Varistor_US" V 2600 1100 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 2680 1100 50  0001 C CNN
-F 3 "https://www.littelfuse.com/products/varistors/multilayer/mla/v5_5mla0603.aspx" H 2750 1100 50  0001 C CNN
-	1    2750 1100
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	2100 1100 2000 1100
-Text Label 3000 1100 0    50   ~ 0
+Text Label 2950 750  0    50   ~ 0
 VBUS
-Wire Wire Line
-	3000 1100 2900 1100
-$Comp
-L Device:Polyfuse F1
-U 1 1 5FDFAF4B
-P 2250 1100
-F 0 "F1" V 2000 1100 50  0000 C CNN
-F 1 "Polyfuse" V 2100 1100 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric" H 2300 900 50  0001 L CNN
-F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/resettable_ptcs/littelfuse_ptc_low_rho_datasheet.pdf.pdf" H 2250 1100 50  0001 C CNN
-F 4 "1206L150SL" V 2250 1100 50  0001 C CNN "Device"
-	1    2250 1100
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	2400 1100 2600 1100
 $Comp
@@ -349,9 +324,9 @@ DEBUG_CTS_MCU
 Text Label 11100 2900 2    50   ~ 0
 DEBUG_DTR_MCU
 Text Label 11100 3000 2    50   ~ 0
-DEBUG_RX_MCU
-Text Label 11100 3100 2    50   ~ 0
 DEBUG_TX_MCU
+Text Label 11100 3100 2    50   ~ 0
+DEBUG_RX_MCU
 Text Label 11000 3200 2    50   ~ 0
 DIO_22
 Text Label 11000 3300 2    50   ~ 0
@@ -1103,42 +1078,42 @@ $EndComp
 $Comp
 L Device:LED D3
 U 1 1 60955642
-P 7000 1500
-F 0 "D3" H 6993 1245 50  0000 C CNN
-F 1 "LED_BLUE" H 6993 1336 50  0000 C CNN
-F 2 "LED_SMD:LED_0603_1608Metric" H 7000 1500 50  0001 C CNN
-F 3 "https://www.kingbrightusa.com/images/catalog/SPEC/APT3216QBC-D.pdf" H 7000 1500 50  0001 C CNN
-	1    7000 1500
+P 6500 2000
+F 0 "D3" H 6493 1745 50  0000 C CNN
+F 1 "LED_BLUE" H 6493 1836 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric" H 6500 2000 50  0001 C CNN
+F 3 "https://www.kingbrightusa.com/images/catalog/SPEC/APT3216QBC-D.pdf" H 6500 2000 50  0001 C CNN
+	1    6500 2000
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R_US R4
 U 1 1 609814AB
-P 6500 1500
-F 0 "R4" V 6600 1600 50  0000 C CNN
-F 1 "200R" V 6600 1400 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 6540 1490 50  0001 C CNN
-F 3 "~" H 6500 1500 50  0001 C CNN
-	1    6500 1500
+P 7000 2000
+F 0 "R4" V 7100 2100 50  0000 C CNN
+F 1 "200R" V 7100 1900 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7040 1990 50  0001 C CNN
+F 3 "~" H 7000 2000 50  0001 C CNN
+	1    7000 2000
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:R_US R5
 U 1 1 60981A2C
-P 6500 2000
-F 0 "R5" V 6600 2100 50  0000 C CNN
-F 1 "200R" V 6600 1900 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 6540 1990 50  0001 C CNN
-F 3 "~" H 6500 2000 50  0001 C CNN
-	1    6500 2000
+P 7000 2500
+F 0 "R5" V 7100 2600 50  0000 C CNN
+F 1 "200R" V 7100 2400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 7040 2490 50  0001 C CNN
+F 3 "~" H 7000 2500 50  0001 C CNN
+	1    7000 2500
 	0    -1   -1   0   
 $EndComp
 Text Label 5900 1000 0    50   ~ 0
 VDDS
 Wire Wire Line
-	6650 2000 6850 2000
+	6650 2500 6850 2500
 Wire Wire Line
-	6650 1500 6850 1500
+	6650 2000 6850 2000
 Wire Wire Line
 	6850 1000 6650 1000
 Wire Wire Line
@@ -1354,32 +1329,24 @@ DIO_8
 $Comp
 L power:GND #PWR01
 U 1 1 6005E763
-P 7500 2600
-F 0 "#PWR01" H 7500 2350 50  0001 C CNN
-F 1 "GND" H 7505 2427 50  0000 C CNN
-F 2 "" H 7500 2600 50  0001 C CNN
-F 3 "" H 7500 2600 50  0001 C CNN
-	1    7500 2600
+P 7500 1600
+F 0 "#PWR01" H 7500 1350 50  0001 C CNN
+F 1 "GND" H 7505 1427 50  0000 C CNN
+F 2 "" H 7500 1600 50  0001 C CNN
+F 3 "" H 7500 1600 50  0001 C CNN
+	1    7500 1600
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	7500 1000 7150 1000
 Wire Wire Line
-	7500 1000 7500 1500
-Connection ~ 7500 2000
-Wire Wire Line
-	7500 1500 7150 1500
-Connection ~ 7500 1500
-Wire Wire Line
-	7500 1500 7500 2000
-Text Label 5900 1500 0    50   ~ 0
+	7500 2000 7150 2000
+Text Label 7500 2000 0    50   ~ 0
 LED1_MCU
-Text Label 5900 2000 0    50   ~ 0
+Text Label 7500 2500 0    50   ~ 0
 LED2_MCU
 Wire Wire Line
-	5900 2000 6350 2000
-Wire Wire Line
-	5900 1500 6350 1500
+	5900 2000 6200 2000
 Wire Wire Line
 	5900 1000 6350 1000
 $Comp
@@ -1395,42 +1362,37 @@ F 4 "QTLP650D-4" V 6500 1000 50  0001 C CNN "Device"
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	7500 2000 7150 2000
+	7500 2500 7150 2500
 $Comp
 L Device:LED D4
 U 1 1 609562A4
-P 7000 2000
-F 0 "D4" H 6993 1745 50  0000 C CNN
-F 1 "LED_BLUE" H 6993 1836 50  0000 C CNN
-F 2 "LED_SMD:LED_0603_1608Metric" H 7000 2000 50  0001 C CNN
-F 3 "https://www.kingbrightusa.com/images/catalog/SPEC/APT3216QBC-D.pdf" H 7000 2000 50  0001 C CNN
-	1    7000 2000
+P 6500 2500
+F 0 "D4" H 6493 2245 50  0000 C CNN
+F 1 "LED_BLUE" H 6493 2336 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric" H 6500 2500 50  0001 C CNN
+F 3 "https://www.kingbrightusa.com/images/catalog/SPEC/APT3216QBC-D.pdf" H 6500 2500 50  0001 C CNN
+	1    6500 2500
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	7500 2000 7500 2500
-Wire Wire Line
-	7500 2500 7200 2500
-Connection ~ 7500 2500
-Wire Wire Line
-	7500 2500 7500 2600
-Text Label 5900 2500 0    50   ~ 0
+	7500 1500 7200 1500
+Text Label 5900 1500 0    50   ~ 0
 BTN1_MCU
 Wire Wire Line
-	5900 2500 6350 2500
+	5900 1500 6350 1500
 $Comp
 L Device:R_US R7
 U 1 1 6022C1CA
-P 6500 2500
-F 0 "R7" V 6600 2600 50  0000 C CNN
-F 1 "200R" V 6600 2400 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" V 6540 2490 50  0001 C CNN
-F 3 "~" H 6500 2500 50  0001 C CNN
-	1    6500 2500
+P 6500 1500
+F 0 "R7" V 6600 1600 50  0000 C CNN
+F 1 "200R" V 6600 1400 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 6540 1490 50  0001 C CNN
+F 3 "~" H 6500 1500 50  0001 C CNN
+	1    6500 1500
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	6650 2500 6800 2500
+	6650 1500 6800 1500
 $Comp
 L BluetoothBlinker-PCB-rescue:Antenna-Device AE1
 U 1 1 60711880
@@ -1445,12 +1407,12 @@ $EndComp
 $Comp
 L Switch:SW_Push SW1
 U 1 1 601EE08E
-P 7000 2500
-F 0 "SW1" H 7000 2785 50  0000 C CNN
-F 1 "SW_Push" H 7000 2694 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_PUSH_6mm" H 7000 2700 50  0001 C CNN
-F 3 "https://datasheet.octopart.com/TL3305AF160QG-E-Switch-datasheet-100437264.pdf" H 7000 2700 50  0001 C CNN
-	1    7000 2500
+P 7000 1500
+F 0 "SW1" H 7000 1785 50  0000 C CNN
+F 1 "SW_Push" H 7000 1694 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_PUSH_6mm" H 7000 1700 50  0001 C CNN
+F 3 "https://datasheet.octopart.com/TL3305AF160QG-E-Switch-datasheet-100437264.pdf" H 7000 1700 50  0001 C CNN
+	1    7000 1500
 	1    0    0    -1  
 $EndComp
 Text Label 11000 1500 2    50   ~ 0
@@ -1459,10 +1421,10 @@ Text Label 4900 2200 2    50   ~ 0
 DEBUG_DTR_MCU
 NoConn ~ 3400 1900
 $Comp
-L Interface_USB:CH340E U?
+L Interface_USB:CH340E U1
 U 1 1 6081C6AF
 P 3800 1800
-F 0 "U?" H 3800 1111 50  0000 C CNN
+F 0 "U1" H 3800 1111 50  0000 C CNN
 F 1 "CH340E" H 3800 1020 50  0000 C CNN
 F 2 "Package_SO:MSOP-10_3x3mm_P0.5mm" H 3850 1250 50  0001 L CNN
 F 3 "https://www.mpja.com/download/35227cpdata.pdf" H 3450 2600 50  0001 C CNN
@@ -1473,4 +1435,63 @@ Wire Wire Line
 	2500 1700 3400 1700
 Wire Wire Line
 	2700 1800 3400 1800
+Wire Wire Line
+	2600 750  2950 750 
+Wire Wire Line
+	2600 750  2600 1100
+Wire Wire Line
+	2700 1100 2600 1100
+Connection ~ 2600 1100
+$Comp
+L power:GND1 #PWR0116
+U 1 1 60E8327C
+P 3100 1150
+F 0 "#PWR0116" H 3100 900 50  0001 C CNN
+F 1 "GND1" H 3105 977 50  0000 C CNN
+F 2 "" H 3100 1150 50  0001 C CNN
+F 3 "" H 3100 1150 50  0001 C CNN
+	1    3100 1150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 1100 3100 1100
+Wire Wire Line
+	3100 1100 3100 1150
+Wire Wire Line
+	7500 1000 7500 1500
+Wire Wire Line
+	7500 1600 7500 1500
+Connection ~ 7500 1500
+Wire Wire Line
+	6200 2500 6200 2000
+Wire Wire Line
+	6200 2500 6350 2500
+Connection ~ 6200 2000
+Wire Wire Line
+	6200 2000 6350 2000
+Text Label 5900 2000 0    50   ~ 0
+VDD
+$Comp
+L Device:Varistor_US RV1
+U 1 1 5FDD0C56
+P 2850 1100
+F 0 "RV1" V 2592 1100 50  0000 C CNN
+F 1 "Varistor_US" V 2700 1100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric" V 2780 1100 50  0001 C CNN
+F 3 "https://www.littelfuse.com/products/varistors/multilayer/mla/v5_5mla0603.aspx" H 2850 1100 50  0001 C CNN
+	1    2850 1100
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:Polyfuse F1
+U 1 1 5FDFAF4B
+P 2250 1100
+F 0 "F1" V 2000 1100 50  0000 C CNN
+F 1 "Polyfuse" V 2100 1100 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric" H 2300 900 50  0001 L CNN
+F 3 "https://www.littelfuse.com/~/media/electronics/datasheets/resettable_ptcs/littelfuse_ptc_low_rho_datasheet.pdf.pdf" H 2250 1100 50  0001 C CNN
+F 4 "1206L150SL" V 2250 1100 50  0001 C CNN "Device"
+	1    2250 1100
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
