@@ -1,2 +1,3 @@
-BluetoothBlinker-MCU/target
-BluetoothBlinker-MCU/Cargo.lock
+target
+Cargo.lock
+output
