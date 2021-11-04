@@ -2,8 +2,8 @@ CC="arm-none-eabi-gcc"
 OBJCOPY="arm-none-eabi-objcopy"
 MFLAGS= -mthumb
 CFLAGS= -O0 -g3  -Wall -mcpu=cortex-m3 -std=gnu11 -include"stdint.h"
-DEFINES= -D__SAML22N18A__ -DMCU_SAML22 -DDEBUG
-LINKER= -T./Linker.ld
+DEFINES= 
+LINKER= 
 INCLUDES_PATHS= \
 	./app/ \
 	./ble/ \
@@ -15,7 +15,7 @@ SRC_PATHS= \
 	./app/app.c \
 	./ble/ble.c \
 	./mcu/mcu.c \
-	main.c
+	./main.c
 
 INCLUDES=$(addprefix -I,$(INCLUDES_PATHS))
 BUILD_DIR=./output
@@ -31,7 +31,7 @@ application: $(BUILD_DIR)/$(TARGET)
 
 $(BUILD_DIR)/$(TARGET): $(OBJS)
 	@echo "linking final target: $(notdir $@)"
-	@$(CC) -o $@.elf $(OBJS) $(MFLAGS) $(LINKER)
+	$(CC) -o $@.elf $(OBJS) $(MFLAGS) $(LINKER)
 	$(OBJCOPY) -O binary $@.elf $@.bin
 	$(OBJCOPY) -O ihex -R .eeprom -R .fuse -R .lock -R .signature $@.elf $@.hex
 	@cp $@.elf $@
@@ -39,7 +39,7 @@ $(BUILD_DIR)/$(TARGET): $(OBJS)
 $(BUILD_DIR)/%.o: %.c
 	@echo "assembling object file: $(notdir $@)"
 	@mkdir -p $(dir $@)
-	@$(CC) -x c $(MFLAGS) $(DEFINES) $(INCLUDES) $(CFLAGS) %< -c -MMD -MP -o $@
+	@$(CC) -x c $(MFLAGS) $(DEFINES) $(INCLUDES) $(CFLAGS) -c -MMD -MP -o $@ $<
 
 .PHONY: clean
 clean:
