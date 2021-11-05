@@ -1,6 +1,12 @@
+[target.thumbv7m-none-eabi]
+
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "arm-none-eabi-gdb -x jlink.gdb"
+
 rustflags = [
-  # LLD (shipped with the Rust toolchain) is used as the default linker
-  "-C", "linker=arm-none-eabi-ld",
+  "-C", "link-arg=--nmagic",
+  "-C", "link-arg=-Tlink.x",
+  # "-C", "linker=arm-none-eabi-ld",
 ]
 
 [build]
