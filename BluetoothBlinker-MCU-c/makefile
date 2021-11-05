@@ -1,17 +1,19 @@
 CC="arm-none-eabi-gcc"
 OBJCOPY="arm-none-eabi-objcopy"
 MFLAGS= -mthumb
-CFLAGS= -O0 -g3  -Wall -mcpu=cortex-m3 -std=gnu11 -include"stdint.h"
-DEFINES= 
-LINKER= 
+CFLAGS= -O0 -Wall -march=armv7-m -mthumb -mcpu=cortex-m3 -std=gnu11 -include"stdint.h" -ffunction-sections -fdata-sections -g3 -gdwarf-3 -gstrict-dwarf
+DEFINES= -DDeviceFamily_CC26X0R2
+LINKER= -T./linker.ld 
 INCLUDES_PATHS= \
 	./app/ \
 	./ble/ \
+	./cc26x0r2/startup_files/ \
 	./drivers/ \
 	./mcu/ \
 	./
 
 SRC_PATHS= \
+	./cc26x0r2/startup_files/startup_gcc.c \
 	./app/app.c \
 	./ble/ble.c \
 	./mcu/mcu.c \
@@ -31,7 +33,7 @@ application: $(BUILD_DIR)/$(TARGET)
 
 $(BUILD_DIR)/$(TARGET): $(OBJS)
 	@echo "linking final target: $(notdir $@)"
-	$(CC) -o $@.elf $(OBJS) $(MFLAGS) $(LINKER)
+	$(CC) $(DEFINES) $(CFLAGS) -nostartfiles -static  -o $@.elf $(OBJS) $(MFLAGS) $(LINKER) -lnosys
 	$(OBJCOPY) -O binary $@.elf $@.bin
 	$(OBJCOPY) -O ihex -R .eeprom -R .fuse -R .lock -R .signature $@.elf $@.hex
 	@cp $@.elf $@
