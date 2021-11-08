@@ -7,7 +7,7 @@
 // Crates and Mods
 //==============================================================================
 use cortex_m;
-use msp432p401r;
+use cc2640r2f_pac;
 
 pub mod gpio;
 pub mod systick;
@@ -45,12 +45,12 @@ pub enum Port{
 // Public Functions
 //==============================================================================
 pub fn init() {
-	let peripherals = msp432p401r::Peripherals::take().unwrap();
+	let peripherals = cc2640r2f_pac::Peripherals::take().unwrap();
 	let cortex_peripherals = cortex_m::Peripherals::take().unwrap();
 
 	systick::init(cortex_peripherals.SYST);
 
-	init_clock(peripherals.CS);
+	init_clock(peripherals.PRCM);
 	
 	// adc::init(peripherals.SAADC);
 	// gpio::init(peripherals.P0);
@@ -75,9 +75,7 @@ pub fn restart() {
 //==============================================================================
 // Private Functions
 //==============================================================================
-fn init_clock(clock: msp432p401r::CS) {
-	clock.cskey.write(|w| unsafe { w.cskey().bits(0x695A) });
-
+fn init_clock(pcrm: cc2640r2f_pac::PRCM) {
 
 }
 

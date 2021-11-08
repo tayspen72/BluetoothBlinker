@@ -8,12 +8,12 @@ version = "0.1.0"
 device = []
 
 [dependencies]
-cortex-m = "0.7.2"
-cortex-m-rt = { version = "0.6.14", features = ["device"] }
-cortex-m-semihosting = "0.3.7"
-msp432p401r-pac = { version = "*", features = ["rt"] }
-# panic-halt = "0.2.0"
-panic-semihosting = "0.5.6"
+cortex-m = "0.7.3"
+cortex-m-rt = { version = "0.7.0", features = ["device"] }
+# cortex-m-semihosting = "0.3.7"
+cc2640r2f_pac = { path = "/home/tayspen72/Projects/cc2640r2f_pac", version = "1.0.0", features = ["rt"] }
+panic-halt = "0.2.0"
+# panic-semihosting = "0.5.6"
 
 [[bin]]
 name = "app"

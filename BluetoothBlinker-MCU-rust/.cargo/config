@@ -6,7 +6,7 @@ runner = "arm-none-eabi-gdb -x jlink.gdb"
 rustflags = [
   "-C", "link-arg=--nmagic",
   "-C", "link-arg=-Tlink.x",
-  # "-C", "linker=arm-none-eabi-ld",
+  "-C", "linker=arm-none-eabi-ld",
 ]
 
 [build]

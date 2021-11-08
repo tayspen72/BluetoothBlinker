@@ -11,7 +11,7 @@ use core::cell::RefCell;
 use core::ops::DerefMut;
 use cortex_m::interrupt::{free, Mutex};
 use crate::mcu;
-use msp432p401r;
+use cc2640r2f_pac;
 
 //==============================================================================
 // Enums, Structs, and Types
@@ -38,62 +38,48 @@ pub enum PinState{
 	PinHigh
 }
 
-#[allow(dead_code)]
-#[allow(non_camel_case_types)]
-pub struct PinConfig{
-	port: mcu::Port,
-	pin: u8
-}
-
 //==============================================================================
 // Variables
 //==============================================================================
-static GPIO_HANDLE: Mutex<RefCell<Option<msp432p401r::DIO>>> = 
+static GPIO_HANDLE: Mutex<RefCell<Option<cc2640r2f_pac::GPIO>>> = 
 	Mutex::new(RefCell::new(None));
 
 //==============================================================================
 // Public Functions
 //==============================================================================
 #[allow(dead_code)]
-pub fn init(dio: msp432p401r::DIO){
-	free(|cs| GPIO_HANDLE.borrow(cs).replace(Some(dio)));
+pub fn init(gpio: cc2640r2f_pac::GPIO){
+	free(|cs| GPIO_HANDLE.borrow(cs).replace(Some(gpio)));
 }
 
 #[allow(dead_code)]
-pub fn get_pin_state(config: PinConfig) -> PinState {
+pub fn get_pin_state(pin: u8) -> PinState {
 	let read = free(|cs|
-		if let Some(ref mut dio) = GPIO_HANDLE.borrow(cs).borrow_mut().deref_mut() {
-			match config.port {
-				mcu::Port::PortA => dio.pain.read().bits(),
-				mcu::Port::PortB => dio.pain.read().bits(),
-				mcu::Port::PortC => dio.pain.read().bits(),
-				mcu::Port::PortD => dio.pain.read().bits(),
-				mcu::Port::PortE => dio.pain.read().bits(),
-				mcu::Port::PortJ => dio.pain.read().bits(),
-			}
+		if let Some(ref mut gpio) = GPIO_HANDLE.borrow(cs).borrow_mut().deref_mut() {
+			gpio.din31_0.read().bits()
 		}
 		else {
 			0
 		}
 	);
-	match read & (1 << config.pin) {
+	match read & (1 << pin) {
 		0 => PinState::PinLow,
 		_ => PinState::PinHigh
 	}
 }
 
 #[allow(dead_code)]
-pub fn pin_disable(_config: PinConfig) {
+pub fn pin_disable(pin: u8) {
 
 }
 
 #[allow(dead_code)]
-pub fn pin_setup(_config: PinConfig){
+pub fn pin_setup(pin: u8){
 
 }
 
 #[allow(dead_code)]
-pub fn set_pin_state(_config: PinConfig, _state: PinState){
+pub fn set_pin_state(pin: u8, _state: PinState){
 
 }
 
