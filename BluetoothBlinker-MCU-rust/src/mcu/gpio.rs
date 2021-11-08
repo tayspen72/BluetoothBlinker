@@ -43,13 +43,16 @@ pub enum PinState{
 //==============================================================================
 static GPIO_HANDLE: Mutex<RefCell<Option<cc2640r2f_pac::GPIO>>> = 
 	Mutex::new(RefCell::new(None));
+static IOC_HANDLE: Mutex<RefCell<Option<cc2640r2f_pac::IOC>>> = 
+	Mutex::new(RefCell::new(None));
 
 //==============================================================================
 // Public Functions
 //==============================================================================
 #[allow(dead_code)]
-pub fn init(gpio: cc2640r2f_pac::GPIO){
+pub fn init(gpio: cc2640r2f_pac::GPIO, ioc: cc2640r2f_pac::IOC){
 	free(|cs| GPIO_HANDLE.borrow(cs).replace(Some(gpio)));
+	free(|cs| IOC_HANDLE.borrow(cs).replace(Some(ioc)));
 }
 
 #[allow(dead_code)]
@@ -75,7 +78,11 @@ pub fn pin_disable(pin: u8) {
 
 #[allow(dead_code)]
 pub fn pin_setup(pin: u8){
+	free(|cs|
+		if let Some(ref mut gpio) = GPIO_HANDLE.borrow(cs).borrow_mut().deref_mut() {
 
+        }
+    );
 }
 
 #[allow(dead_code)]

@@ -53,7 +53,7 @@ pub fn init() {
 	init_clock(peripherals.PRCM);
 	
 	// adc::init(peripherals.SAADC);
-	// gpio::init(peripherals.P0);
+	gpio::init(peripherals.GPIO, peripherals.IOC);
 	// input::init(peripherals.GPIOTE);
 	// i2c::init(peripherals.TWI1);
 	// rtc::init(peripherals.RTC0, &peripherals.CLOCK, wake_interval);
