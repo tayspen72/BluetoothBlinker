@@ -5,6 +5,7 @@ The goal of the project is to help myself become more familiar with the electron
 * PCB Layout
 * Initial Board Bring-Up and Verification
 * Firmware Development
+* Evaluate Rust in an embedded microcontroller application
 
 Plan
 Build a PCB project with a similar purpose to a manufacturer evalutation kit with the following requirements:
